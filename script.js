@@ -103,17 +103,6 @@ function loadMap(){
 	//create popup. add listner to featurre group that runs functions when clicked 
 	markersLayer.on('click', markerOnClick);
 	
-	/*
-	//set up new geocoder object. add listner to post code search that runs function
-	var geocoder = new google.maps.Geocoder();
-    document.getElementById('postcode_search').addEventListener('click', function() {
-		postcodeSearch(geocoder, ofstedMap);
-    });
-	*/
-	// Add listner to post code search that runs postcode geocodeer function
-	document.getElementById('postcode_search').addEventListener('click', function() {
-		postcodeSearch(ofstedMap);
-    });
 
 //function to perform popup process.
 //modify the side bar with the marker property information.
