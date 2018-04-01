@@ -104,17 +104,19 @@ function loadMap(){
 	markersLayer.on('click', markerOnClick);
 	
 	//set up new geocoder object. add listner to post code search that runs function
+	//Google Solution
+	/*
 	var geocoder = new google.maps.Geocoder();
     document.getElementById('postcode_search').addEventListener('click', function() {
 		postcodeSearch(geocoder, ofstedMap);
     });
-	/*
+	*/
 	// Add listner to post code search that runs postcode geocodeer function. 
 	//Proprietary Solution
 	document.getElementById('postcode_search').addEventListener('click', function() {
 		postcodeSearch(ofstedMap);
     });
-	*/
+	
 
 	//function to perform popup process.
 	//modify the side bar with the marker property information.
@@ -137,6 +139,7 @@ function loadMap(){
 	//function that performs a postcode geocode lookup then pans map to that location
 	//code taken modified from here https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple
 	//Google Solution
+	/*
 	function postcodeSearch(geocoder, resultsMap){
 	var in_postcode = document.getElementById('in_postcode').value;
     geocoder.geocode({'address': in_postcode}, function(results, status) {
@@ -149,9 +152,9 @@ function loadMap(){
 		else {
 			alert('Geocode was not successful for the following reason: ' + status);
         }
-		})}	;
+		})};
+	*/
 	
-	/*
 	//function to perform postcode Geocode.Zoom map to postcode location
 	//Proprietary Solution
 	function postcodeSearch(resultsMap){
@@ -170,5 +173,5 @@ function loadMap(){
 			alert('Geocode was unsuccessful.\nEnsure Postcode is correct and formatted correctly: \nInclude space - AB11 2BC');
 		};
 	};
-	*/
+	
 	};
