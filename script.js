@@ -103,9 +103,9 @@ function loadMap(){
 	//create popup. add listner to featurre group that runs functions when clicked 
 	markersLayer.on('click', markerOnClick);
 	// Add listner to post code search that runs postcode geocodeer function
-	//document.getElementById('postcode_search').addEventListener('click', function() {
-		//postcodeSearch(ofstedMap);
-    //});
+	document.getElementById('postcode_search').addEventListener('click', function() {
+		postcodeSearch(ofstedMap);
+    });
 	
 
 //function to perform popup process.
