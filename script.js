@@ -7,7 +7,7 @@ function loadMap(){
 	//maybe change basemap to Arc? Mapbox?
 	L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'Map data ©OpenStreetMap contributors, CC-BY-SA, Imagery ©CloudMade',maxZoom: 18}).addTo(ofstedMap);
 
-		//Creat Icon object options for the creation of diiferent marker icons
+	//Creat Icon object options for the creation of diiferent marker icons
 	var BulletIcon = L.Icon.extend({
 		options: {
 			iconSize:     [20, 20],
@@ -102,11 +102,19 @@ function loadMap(){
 	
 	//create popup. add listner to featurre group that runs functions when clicked 
 	markersLayer.on('click', markerOnClick);
-	// Add listner to post code search that runs postcode geocodeer function
+	
+	//set up new geocoder object. add listner to post code search that runs function
+	var geocoder = new google.maps.Geocoder();
+    document.getElementById('postcode_search').addEventListener('click', function() {
+		postcodeSearch(geocoder, ofstedMap);
+    });
+	/*
+	// Add listner to post code search that runs postcode geocodeer function. 
+	//Proprietary Solution
 	document.getElementById('postcode_search').addEventListener('click', function() {
 		postcodeSearch(ofstedMap);
     });
-	
+	*/
 
 	//function to perform popup process.
 	//modify the side bar with the marker property information.
@@ -125,6 +133,27 @@ function loadMap(){
 				"<b>Deprivation:</b> " + attributes.Deprivatio + "<br>" +
 				"<b>As at Date:</b> " + attributes.As_at_date + "<br>"
 	};
+	
+	//function that performs a postcode geocode lookup then pans map to that location
+	//code taken modified from here https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple
+	//Google Solution
+	function postcodeSearch(geocoder, resultsMap){
+	var in_postcode = document.getElementById('in_postcode').value;
+    geocoder.geocode({'address': in_postcode}, function(results, status) {
+		if (status == 'OK') {
+			lat = results[0].geometry.location.lat()
+			lng = results[0].geometry.location.lng()
+			resultsMap.panTo([lat, lng])
+			resultsMap.setZoom(15)
+        } 
+		else {
+			alert('Geocode was not successful for the following reason: ' + status);
+        }
+		})}	;
+	
+	/*
+	//function to perform postcode Geocode.Zoom map to postcode location
+	//Proprietary Solution
 	function postcodeSearch(resultsMap){
 		var complete = 0;
 		var in_postcode = document.getElementById('in_postcode').value.toUpperCase();
@@ -141,5 +170,5 @@ function loadMap(){
 			alert('Geocode was unsuccessful.\nEnsure Postcode is correct and formatted correctly: \nInclude space - AB11 2BC');
 		};
 	};
-	
+	*/
 	};
