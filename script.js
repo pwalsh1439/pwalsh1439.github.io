@@ -117,6 +117,7 @@ function loadMap(){
 
 //function to perform popup process.
 //modify the side bar with the marker property information.
+/*
 function markerOnClick(e) {
 	var attributes = e.layer.properties;
 	document.getElementById('updatehtml').innerHTML = 
@@ -133,3 +134,4 @@ function markerOnClick(e) {
 			"<b>As at Date:</b> " + attributes.As_at_date + "<br>"
 			};
 	};
+*/
