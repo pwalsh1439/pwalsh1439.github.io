@@ -127,3 +127,21 @@ function markerOnClick(e) {
 			};
 	
 	};
+	
+	
+	function postcodeSearch(resultsMap){
+		var complete = 0;
+		var in_postcode = document.getElementById('in_postcode').value.toUpperCase();
+		for (var i = 0; i < Postcode_Geocoder.length; i++){
+			if (Postcode_Geocoder[i].postcode == in_postcode){
+				lat = Postcode_Geocoder[i].latitude
+				lng = Postcode_Geocoder[i].longitude
+				resultsMap.panTo([lat, lng])
+				resultsMap.setZoom(15)
+				complete += 1
+			};
+		};
+		if (complete == 0){
+			alert('Geocode was unsuccessful.\nEnsure Postcode is correct and formatted correctly: \nInclude space - AB11 2BC');
+		};
+	};
