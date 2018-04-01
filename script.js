@@ -100,5 +100,25 @@ function loadMap(){
 		}
     }
 	
+		//create popup. add listner to featurre group that runs functions when clicked 
+	markersLayer.on('click', markerOnClick);
+
+//function to perform popup process.
+//modify the side bar with the marker property information.
+function markerOnClick(e) {
+	var attributes = e.layer.properties;
+	document.getElementById('updatehtml').innerHTML = 
+			"<b>Provider:</b> " + attributes.provider + "<br>" +
+			"<b>Rating:</b> " + attributes.rating + "<br>" +
+			"<b>Phase:</b> " + attributes.Phase + "<br>" +
+			"<b>Remit:</b> " + attributes.Remit + "<br>" + 
+			"<b>Constituency:</b> " + attributes.Constituen + "<br>" +
+			"<b>Local authority:</b> " + attributes.Local_auth + "<br>" +
+			"<b>Provider Type:</b> " + attributes.Provider_t + "<br>" +
+			"<b>Provision Type:</b> " + attributes.Provision + "<br>" +
+			"<b>Learner Number/Places:</b> " + attributes.Learner_nu + "<br>" +
+			"<b>Deprivation:</b> " + attributes.Deprivatio + "<br>" +
+			"<b>As at Date:</b> " + attributes.As_at_date + "<br>"
+			};
 	
 	};
